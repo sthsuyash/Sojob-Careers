@@ -40,6 +40,13 @@ def index():
 def list_jobs():
     return jsonify(JOBS)
 
+@app.route('/jobs/<int:id>')
+def get_job(id):
+    job = [job for job in JOBS if job['id'] == id]
+    if len(job) == 0:
+        return jsonify({'message': 'Job not found!'})
+    return jsonify(job[0])
+
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)
