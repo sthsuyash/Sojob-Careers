@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sojob Careers</title>
+
+    <!-- custom css file -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+
+    <!-- bootstrap 5 jsdeliver cdn -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384@evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOttfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1
+        class="text-center mt-4 mb-2"
+        style="font-size: 4rem; font-weight: 700;"
+      >
+        Sojob Careers
+      </h1>
+
+      <img
+        class="img-fluid"
+        id="banner"
+        src="{{ url_for('static', filename='banner.jpg') }}"
+        alt="banner figure"
+      />
+
+      <h2 class="text-center mb-2 mt-4" style="font-size: 3rem;">
+        <!-- company_name variable from app.py using jinja2 -->
+        About Sojob
+      </h2>
+      <p class="lead">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae
+        voluptas impedit, delectus commodi laborum quisquam in sed, perspiciatis
+        sunt maiores quos! Voluptatem dolorum ipsam adipisci suscipit, quae
+        corrupti provident accusamus! Unde ad explicabo tempore libero
+        necessitatibus optio, natus quam nobis voluptatem totam in sit
+        distinctio molestias, maiores dignissimos similique. At rem pariatur
+        sunt repellendus, minima optio totam reiciendis nulla unde. Facilis,
+        facere omnis! Nesciunt quam placeat similique voluptatibus.
+      </p>
+
+      <h2 class="text-center mb-2 mt-4" style="font-size: 3rem;">
+        Open Positions
+      </h2>
+      <div class="positions-main-container">
+        <!-- for loop using jinja2 -->
+        {% for job in jobs %} {% include 'job_item.html' %} {% endfor %}
+      </div>
+
+      <div class="text-center">
+        <button class="btn btn-primary btn-lg">Contact Us</button>
+        <p class="mt-4">&#169; Copyright 2023, Suyash</p>
+      </div>
+    </div>
+  </body>
+</html>
