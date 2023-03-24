@@ -45,6 +45,7 @@
       <!-- company_name variable from app.py using jinja2 -->
       <!-- About Sojob -->
       <!-- </h2> -->
+
       <p class="lead" id="about">
         Sojob Careers is a platform that connects job seekers and employers in
         Nepal. Whether you are looking for a full-time, part-time, or freelance
@@ -64,7 +65,11 @@
         {% for job in jobs %} {% include 'job_item.html' %} {% endfor %}
       </div>
       <div class="text-center">
-        <button class="btn btn-primary btn-lg">Contact Us</button>
+        <a
+          href="mailto:sthasuyash11@gmail.com?subject=Queries on job openings"
+          class="btn btn-primary btn-lg"
+          >Contact Us</a
+        >
       </div>
     </div>
     {% include 'footer.html' %}
