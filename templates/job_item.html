@@ -5,8 +5,8 @@
   <div class="col-9">
     <h3 class="positions" style="margin-bottom: 5px;">{{ job['title'] }}</h3>
     <p><b>Location:</b> {{ job['location'] }}</p>
-    {% if 'salary' in job %}
-    <p><b>Salary:</b> {{ job['salary'] }}</p>
+    {% if 'salary' in job and 'currency' in job %}
+    <p><b>Salary:</b> {{ job['currency'] }} {{ job['salary'] }}</p>
     {% endif %}
   </div>
   <div class="col-3">
