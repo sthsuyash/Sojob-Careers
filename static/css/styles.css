@@ -69,3 +69,21 @@ h2 {
     font-size: 1.4rem;
     margin: 0;
 }
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.buttons {
+    background-color: #132d5e;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 7px;
+    margin: 0 10px;
+    cursor: pointer;
+}
