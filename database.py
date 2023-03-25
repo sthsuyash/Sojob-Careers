@@ -41,3 +41,21 @@ def load_job_from_db(id):
         if job:
             job = dict(zip(result.keys(), job))
         return job
+
+
+def add_application_to_db(job_id, application):
+    with engine.connect() as conn:
+        query = text(
+            "INSERT INTO applications (job_id, first_name, last_name, email, phone,resume, cover_letter, linkedin_profile, github_profile) VALUES (:job_id, :first_name, :last_name, :email, :phone, :resume, :cover_letter, :linkedin_profile, :github_profile)")
+
+        conn.execute(query, {
+            'job_id': job_id,
+            'first_name': application['first_name'],
+            'last_name': application['last_name'],
+            'email': application['email'],
+            'phone': application['phone'],
+            'resume': application['resume'],
+            'cover_letter': application['cover_letter'],
+            'linkedin_profile': application['linkedin_profile'],
+            'github_profile': application['github_profile']
+        })
