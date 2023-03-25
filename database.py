@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine, text
 from dotenv import load_dotenv
+
 load_dotenv()
 import os
 
@@ -31,3 +32,12 @@ def load_jobs_from_db():
         #     first_result_dict = dict(zip(result.keys(), first_result))
 
         # print(first_result_dict['title'])
+
+
+def load_job_from_db(id):
+    with engine.connect() as con:
+        result = con.execute(text(f"SELECT * FROM jobs WHERE id = {id}"))
+        job = result.fetchone()
+        if job:
+            job = dict(zip(result.keys(), job))
+        return job
