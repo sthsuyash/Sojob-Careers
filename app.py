@@ -3,6 +3,38 @@ from database import load_jobs_from_db, load_job_from_db
 
 app = Flask(__name__)
 
+
+@app.route('/')
+def index():
+    # return '<h1>Hello World!</h1>'
+    jobs = load_jobs_from_db()
+    return render_template('index.html', jobs=jobs)
+
+@app.route('/api/jobs')
+def list_jobs():
+    jobs = load_jobs_from_db()
+    return jsonify(jobs)
+
+@app.route('/api/jobs/<int:id>')
+def get_job(id):
+    jobs = load_jobs_from_db()
+    job = [job for job in jobs if job['id'] == id]
+    if len(job) == 0:
+        return jsonify({'message': 'Job not found!'})
+    return jsonify(job[0])
+
+@app.route('/job/<id>')
+def show_job(id):
+    job = load_job_from_db(id)
+    if not job:
+        return 'Job not found!', 404
+    # return jsonify(job)
+    return render_template('jobpage.html', job=job)
+
+
+if __name__ == '__main__':
+    app.run(port=8000, debug=True)
+
 # database variables
 # JOBS = [
 #     {
@@ -30,35 +62,3 @@ app = Flask(__name__)
 #     },
 
 # ]
-
-
-@app.route('/')
-def index():
-    # return '<h1>Hello World!</h1>'
-    jobs = load_jobs_from_db()
-    return render_template('index.html', jobs=jobs, company_name="Sojob")
-
-@app.route('/api/jobs')
-def list_jobs():
-    jobs = load_jobs_from_db()
-    return jsonify(jobs)
-
-@app.route('/api/jobs/<int:id>')
-def get_job(id):
-    jobs = load_jobs_from_db()
-    job = [job for job in jobs if job['id'] == id]
-    if len(job) == 0:
-        return jsonify({'message': 'Job not found!'})
-    return jsonify(job[0])
-
-@app.route('/job/<id>')
-def show_job(id):
-    job = load_job_from_db(id)
-    if not job:
-        return 'Job not found!', 404
-    # return jsonify(job)
-    return render_template('jobpage.html', job=job)
-
-
-if __name__ == '__main__':
-    app.run(port=8000, debug=True)
