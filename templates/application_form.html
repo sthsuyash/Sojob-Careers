@@ -1,0 +1,44 @@
+<h3>Application Form</h3>
+<form action="/job/{{job['id']}}/apply" method="post">
+  <label>
+    First Name<br /><input
+      type="text"
+      name="first_name"
+      id="first_name"
+      required /></label
+  >&nbsp;&nbsp;
+  <label>
+    Last Name<br /><input
+      type="text"
+      name="last_name"
+      id="last_name"
+      required /></label
+  ><br />
+  <label> Email<br /><input type="text" name="email" id="email" /></label>
+  <br />
+  <label> Phone<br /><input type="text" name="phone" id="phone" /></label><br />
+  <label> Resume<br /><input type="file" name="resume" id="resume" /></label
+  ><br />
+  <label>
+    Cover Letter<br /><input
+      type="file"
+      name="cover_letter"
+      id="cover_letter" /></label
+  ><br />
+  <label>
+    LinkedIn Profile<br /><input
+      type="url"
+      name="linkedin_profile"
+      id="linkedin" /></label
+  ><br />
+  <label>
+    GitHub Profile<br /><input
+      type="url"
+      name="github_profile"
+      id="github" /></label
+  ><br />
+  <div class="buttons-container">
+    <button type="submit" class="buttons">Submit</button>
+    <button type="reset" class="buttons">Reset</button>
+  </div>
+</form>
